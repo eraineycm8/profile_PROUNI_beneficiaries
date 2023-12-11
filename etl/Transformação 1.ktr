@@ -588,8 +588,8 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection/>
-    <schema>public</schema>
+    <connection>MySql_olap_PROUNI</connection>
+    <schema>olap_prouni</schema>
     <table>dim_tempo</table>
     <commit>1000</commit>
     <truncate>N</truncate>
