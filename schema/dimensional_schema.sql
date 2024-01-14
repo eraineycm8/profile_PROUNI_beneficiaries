@@ -3,7 +3,7 @@ CREATE SCHEMA profile_prouni_beneficiaries;
 USE profile_prouni_beneficiaries;
 
 CREATE TABLE dim_tempo (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_tempo INT AUTO_INCREMENT PRIMARY KEY,
     ano INT
 );
 
@@ -28,4 +28,19 @@ CREATE TABLE dim_perfil_beneficiario (
     sexo VARCHAR(50),
     condicao_fisica VARCHAR(100),
     grupo_racial VARCHAR(50)
+);
+
+
+CREATE TABLE fato_beneficios_prouni (
+    id_tempo INT,
+    id_local INT,
+    id_perfil_bolsa INT,
+    id_perfil_beneficiario INT,
+    -- Metricas abaixo
+    quantidade INT,
+    PRIMARY KEY (id_tempo, id_local, id_perfil_bolsa, id_perfil_beneficiario),
+    CONSTRAINT fk_tempo FOREIGN KEY (id_tempo) REFERENCES dim_tempo(id_tempo),
+    CONSTRAINT fk_local FOREIGN KEY (id_local) REFERENCES dim_local(id_local),
+    CONSTRAINT fk_perfil_bolsa FOREIGN KEY (id_perfil_bolsa) REFERENCES dim_perfil_bolsa(id_perfil_bolsa),
+    CONSTRAINT fk_perfil_beneficiario FOREIGN KEY (id_perfil_beneficiario) REFERENCES dim_perfil_beneficiario(id_perfil_beneficiario)
 );
