@@ -430,7 +430,7 @@
     <created_date>2024/01/14 12:03:18.963</created_date>
     <modified_user>-</modified_user>
     <modified_date>2024/01/14 12:03:18.963</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -587,7 +587,7 @@
     <hop>
       <from>Group by -PK da Fato</from>
       <to>Table output - Fato</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
   </order>
   <step>
@@ -804,6 +804,493 @@
     <GUI>
       <xloc>96</xloc>
       <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database lookup_dim_local</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>PC_Legion</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>profile_prouni_beneficiaries</schema>
+      <table>dim_local</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>REGIAO_BENEFICIARIO_BOLSA</name>
+        <field>regiao</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>SIGLA_UF_BENEFICIARIO_BOLSA</name>
+        <field>estado</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>nome</name>
+        <field>cidade</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id_local</name>
+        <rename>id_local</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database lookup_dim_tempo</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>PC_Legion</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>profile_prouni_beneficiaries</schema>
+      <table>dim_tempo</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>ANO_CONCESSAO_BOLSA</name>
+        <field>ano</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id_tempo</name>
+        <rename>id_tempo</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database lookup_perfil_beneficiario</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>PC_Legion</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>profile_prouni_beneficiaries</schema>
+      <table>dim_perfil_beneficiario</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>faixa_etaria</name>
+        <field>faixa_etaria</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>SEXO_BENEFICIARIO_BOLSA</name>
+        <field>sexo</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>BENEFICIARIO_DEFICIENTE_FISICO</name>
+        <field>condicao_fisica</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>RACA_BENEFICIARIO_BOLSA</name>
+        <field>grupo_racial</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id_perfil_beneficiario</name>
+        <rename>id_perfil_beneficiario</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Database lookup_perfil_bolsa</name>
+    <type>DBLookup</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>PC_Legion</connection>
+    <cache>Y</cache>
+    <cache_load_all>Y</cache_load_all>
+    <cache_size>0</cache_size>
+    <lookup>
+      <schema>profile_prouni_beneficiaries</schema>
+      <table>dim_perfil_bolsa</table>
+      <orderby/>
+      <fail_on_multiple>N</fail_on_multiple>
+      <eat_row_on_failure>N</eat_row_on_failure>
+      <key>
+        <name>TIPO_BOLSA</name>
+        <field>tp_bolsa</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>MODALIDADE_ENSINO_BOLSA</name>
+        <field>modalidade</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>NOME_TURNO_CURSO_BOLSA</name>
+        <field>turno</field>
+        <condition>=</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>id_perfil_bolsa</name>
+        <rename>id_perfil_bolsa</rename>
+        <default/>
+        <type>Integer</type>
+      </value>
+    </lookup>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filtro_Ano</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to/>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>ANO_CONCESSAO_BOLSA</leftvalue>
+            <function>&gt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2015</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>ANO_CONCESSAO_BOLSA</leftvalue>
+            <function>&lt;=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>2019</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>32</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by -PK da Fato</name>
+    <type>GroupBy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore/>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>Y</add_linenr>
+    <linenr_fieldname>reg</linenr_fieldname>
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>id_tempo</name>
+      </field>
+      <field>
+        <name>id_local</name>
+      </field>
+      <field>
+        <name>id_perfil_bolsa</name>
+      </field>
+      <field>
+        <name>id_perfil_beneficiario</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>quantidade</aggregate>
+        <subject>CPF_BENEFICIARIO_BOLSA</subject>
+        <type>COUNT_ALL</type>
+        <valuefield>1</valuefield>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+// Obtém o valor do campo NOME
+var nome = MUNICIPIO_BENEFICIARIO_BOLSA;
+
+// Verifica se o campo não é nulo ou vazio
+if (nome != null &amp;&amp; nome.trim() !== "") {
+    // Converte a primeira letra de cada palavra para maiúscula e as demais para minúscula
+    var palavras = nome.toLowerCase().split(" ");
+    
+    for (var i = 0; i &lt; palavras.length; i++) {
+        palavras[i] = palavras[i].charAt(0).toUpperCase() + palavras[i].slice(1);
+    }
+    
+    // Junta as palavras novamente
+    nome = palavras.join(" ");
+}
+
+// Define o valor transformado de volta no campo NOME
+MUNICIPIO_BENEFICIARIO_BOLSA = nome;
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>nome</name>
+        <rename>nome</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value - Classificar Faixa Etaria</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <compatible>Y</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+function getFaixaEtaria(idade) {
+    if (idade &lt; 16) {
+        return 'Sub 16';
+    } else if (idade >= 16 &amp;&amp; idade &lt;= 18) {
+        return 'De 16 a 18 anos';
+    } else if (idade >= 19 &amp;&amp; idade &lt;= 21) {
+        return 'De 19 a 21 anos';
+    } else if (idade >= 22 &amp;&amp; idade &lt;= 25) {
+        return 'De 22 a 25 anos';
+    } else if (idade >= 26 &amp;&amp; idade &lt;= 30) {
+        return 'De 26 a 30 anos';
+    } else if (idade >= 31 &amp;&amp; idade &lt;= 35) {
+        return 'De 31 a 35 anos';
+    } else if (idade >= 36 &amp;&amp; idade &lt;= 40) {
+        return 'De 36 a 40 anos';
+    } else if (idade >= 41 &amp;&amp; idade &lt;= 50) {
+        return 'De 41 a 50 anos';
+    } else {
+        return '51+ anos';
+    }
+}
+
+var faixa_etaria = getFaixaEtaria (idade.getNumber());
+var idade = idade.getNumber();</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>faixa_etaria</name>
+        <rename>faixa_etaria</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1159,6 +1646,222 @@
     </GUI>
   </step>
   <step>
+    <name>Renomear deficiencia fisica</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>BENEFICIARIO_DEFICIENTE_FISICO</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>nao</replace_string>
+        <replace_by_string>Pessoa sem deficiência</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>BENEFICIARIO_DEFICIENTE_FISICO</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>sim</replace_string>
+        <replace_by_string>Pessoa com deficiência</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Renomear modalidade de ensino</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>MODALIDADE_ENSINO_BOLSA</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>EAD</replace_string>
+        <replace_by_string>Educação a distância</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>yes</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>MODALIDADE_ENSINO_BOLSA</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>PRESENCIAL</replace_string>
+        <replace_by_string>Presencial</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>yes</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Renomear sexo </name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>SEXO_BENEFICIARIO_BOLSA</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>F</replace_string>
+        <replace_by_string>Feminino</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>yes</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>SEXO_BENEFICIARIO_BOLSA</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>M</replace_string>
+        <replace_by_string>Masculino</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>yes</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>304</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Renomear valores de tipo bolsa</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>TIPO_BOLSA</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>BOLSA COMPLEMENTAR 25%</replace_string>
+        <replace_by_string>Bolsa 25% (Complementar)</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>TIPO_BOLSA</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>BOLSA PARCIAL 50%</replace_string>
+        <replace_by_string>Bolsa 50% (Parcial)</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>TIPO_BOLSA</in_stream_name>
+        <out_stream_name/>
+        <use_regex>no</use_regex>
+        <replace_string>BOLSA INTEGRAL</replace_string>
+        <replace_by_string>Bolsa 100% (Integral)</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>96</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Renomer Região</name>
     <type>ReplaceString</type>
     <description/>
@@ -1246,801 +1949,6 @@
     </GUI>
   </step>
   <step>
-    <name>Select values - Campos para processar</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>ANO_CONCESSAO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>CODIGO_EMEC_IES_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>NOME_IES_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>TIPO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>MODALIDADE_ENSINO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>NOME_CURSO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>NOME_TURNO_CURSO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>CPF_BENEFICIARIO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>SEXO_BENEFICIARIO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>RACA_BENEFICIARIO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>DT_NASCIMENTO_BENEFICIARIO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>BENEFICIARIO_DEFICIENTE_FISICO</name>
-        <rename/>
-      </field>
-      <field>
-        <name>REGIAO_BENEFICIARIO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>SIGLA_UF_BENEFICIARIO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>MUNICIPIO_BENEFICIARIO_BOLSA</name>
-        <rename/>
-      </field>
-      <field>
-        <name>idade</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Renomear modalidade de ensino</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>MODALIDADE_ENSINO_BOLSA</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>EAD</replace_string>
-        <replace_by_string>Educação a distância</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>yes</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>MODALIDADE_ENSINO_BOLSA</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>PRESENCIAL</replace_string>
-        <replace_by_string>Presencial</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>yes</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Renomear valores de tipo bolsa</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>TIPO_BOLSA</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>BOLSA COMPLEMENTAR 25%</replace_string>
-        <replace_by_string>Bolsa 25% (Complementar)</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>TIPO_BOLSA</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>BOLSA PARCIAL 50%</replace_string>
-        <replace_by_string>Bolsa 50% (Parcial)</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>TIPO_BOLSA</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>BOLSA INTEGRAL</replace_string>
-        <replace_by_string>Bolsa 100% (Integral)</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value - Classificar Faixa Etaria</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>Y</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-function getFaixaEtaria(idade) {
-    if (idade &lt; 16) {
-        return 'Sub 16';
-    } else if (idade >= 16 &amp;&amp; idade &lt;= 18) {
-        return 'De 16 a 18 anos';
-    } else if (idade >= 19 &amp;&amp; idade &lt;= 21) {
-        return 'De 19 a 21 anos';
-    } else if (idade >= 22 &amp;&amp; idade &lt;= 25) {
-        return 'De 22 a 25 anos';
-    } else if (idade >= 26 &amp;&amp; idade &lt;= 30) {
-        return 'De 26 a 30 anos';
-    } else if (idade >= 31 &amp;&amp; idade &lt;= 35) {
-        return 'De 31 a 35 anos';
-    } else if (idade >= 36 &amp;&amp; idade &lt;= 40) {
-        return 'De 36 a 40 anos';
-    } else if (idade >= 41 &amp;&amp; idade &lt;= 50) {
-        return 'De 41 a 50 anos';
-    } else {
-        return '51+ anos';
-    }
-}
-
-var faixa_etaria = getFaixaEtaria (idade.getNumber());
-var idade = idade.getNumber();</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>faixa_etaria</name>
-        <rename>faixa_etaria</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Renomear deficiencia fisica</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>BENEFICIARIO_DEFICIENTE_FISICO</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>nao</replace_string>
-        <replace_by_string>Pessoa sem deficiência</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>BENEFICIARIO_DEFICIENTE_FISICO</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>sim</replace_string>
-        <replace_by_string>Pessoa com deficiência</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Renomear sexo </name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>SEXO_BENEFICIARIO_BOLSA</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>F</replace_string>
-        <replace_by_string>Feminino</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>yes</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>SEXO_BENEFICIARIO_BOLSA</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>M</replace_string>
-        <replace_by_string>Masculino</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>yes</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>592</xloc>
-      <yloc>304</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filtro_Ano</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to/>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>ANO_CONCESSAO_BOLSA</leftvalue>
-            <function>&gt;=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2015</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>ANO_CONCESSAO_BOLSA</leftvalue>
-            <function>&lt;=</function>
-            <rightvalue/>
-            <value>
-              <name>constant</name>
-              <type>Integer</type>
-              <text>2019</text>
-              <length>-1</length>
-              <precision>0</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>32</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-// Obtém o valor do campo NOME
-var nome = MUNICIPIO_BENEFICIARIO_BOLSA;
-
-// Verifica se o campo não é nulo ou vazio
-if (nome != null &amp;&amp; nome.trim() !== "") {
-    // Converte a primeira letra de cada palavra para maiúscula e as demais para minúscula
-    var palavras = nome.toLowerCase().split(" ");
-    
-    for (var i = 0; i &lt; palavras.length; i++) {
-        palavras[i] = palavras[i].charAt(0).toUpperCase() + palavras[i].slice(1);
-    }
-    
-    // Junta as palavras novamente
-    nome = palavras.join(" ");
-}
-
-// Define o valor transformado de volta no campo NOME
-MUNICIPIO_BENEFICIARIO_BOLSA = nome;
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>nome</name>
-        <rename>nome</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup_dim_tempo</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>PC_Legion</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>profile_prouni_beneficiaries</schema>
-      <table>dim_tempo</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>ANO_CONCESSAO_BOLSA</name>
-        <field>ano</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id_tempo</name>
-        <rename>id_tempo</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup_dim_local</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>PC_Legion</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>profile_prouni_beneficiaries</schema>
-      <table>dim_local</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>REGIAO_BENEFICIARIO_BOLSA</name>
-        <field>regiao</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>SIGLA_UF_BENEFICIARIO_BOLSA</name>
-        <field>estado</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>nome</name>
-        <field>cidade</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id_local</name>
-        <rename>id_local</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup_perfil_bolsa</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>PC_Legion</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>profile_prouni_beneficiaries</schema>
-      <table>dim_perfil_bolsa</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>TIPO_BOLSA</name>
-        <field>tp_bolsa</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>MODALIDADE_ENSINO_BOLSA</name>
-        <field>modalidade</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>NOME_TURNO_CURSO_BOLSA</name>
-        <field>turno</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id_perfil_bolsa</name>
-        <rename>id_perfil_bolsa</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Database lookup_perfil_beneficiario</name>
-    <type>DBLookup</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>PC_Legion</connection>
-    <cache>Y</cache>
-    <cache_load_all>Y</cache_load_all>
-    <cache_size>0</cache_size>
-    <lookup>
-      <schema>profile_prouni_beneficiaries</schema>
-      <table>dim_perfil_beneficiario</table>
-      <orderby/>
-      <fail_on_multiple>N</fail_on_multiple>
-      <eat_row_on_failure>N</eat_row_on_failure>
-      <key>
-        <name>faixa_etaria</name>
-        <field>faixa_etaria</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>SEXO_BENEFICIARIO_BOLSA</name>
-        <field>sexo</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>BENEFICIARIO_DEFICIENTE_FISICO</name>
-        <field>condicao_fisica</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <key>
-        <name>RACA_BENEFICIARIO_BOLSA</name>
-        <field>grupo_racial</field>
-        <condition>=</condition>
-        <name2/>
-      </key>
-      <value>
-        <name>id_perfil_beneficiario</name>
-        <rename>id_perfil_beneficiario</rename>
-        <default/>
-        <type>Integer</type>
-      </value>
-    </lookup>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1104</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Group by -PK da Fato</name>
-    <type>GroupBy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <all_rows>N</all_rows>
-    <ignore_aggregate>N</ignore_aggregate>
-    <field_ignore/>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>grp</prefix>
-    <add_linenr>Y</add_linenr>
-    <linenr_fieldname>reg</linenr_fieldname>
-    <give_back_row>N</give_back_row>
-    <group>
-      <field>
-        <name>id_tempo</name>
-      </field>
-      <field>
-        <name>id_local</name>
-      </field>
-      <field>
-        <name>id_perfil_bolsa</name>
-      </field>
-      <field>
-        <name>id_perfil_beneficiario</name>
-      </field>
-    </group>
-    <fields>
-      <field>
-        <aggregate>quantidade</aggregate>
-        <subject>CPF_BENEFICIARIO_BOLSA</subject>
-        <type>COUNT_ALL</type>
-        <valuefield>1</valuefield>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>96</xloc>
-      <yloc>496</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Select values - Campos para a fato</name>
     <type>SelectValues</type>
     <description/>
@@ -2054,23 +1962,18 @@ MUNICIPIO_BENEFICIARIO_BOLSA = nome;
     <fields>
       <field>
         <name>id_tempo</name>
-        <rename/>
       </field>
       <field>
         <name>id_local</name>
-        <rename/>
       </field>
       <field>
         <name>id_perfil_bolsa</name>
-        <rename/>
       </field>
       <field>
         <name>id_perfil_beneficiario</name>
-        <rename/>
       </field>
       <field>
         <name>CPF_BENEFICIARIO_BOLSA</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2085,6 +1988,82 @@ MUNICIPIO_BENEFICIARIO_BOLSA = nome;
     <GUI>
       <xloc>1104</xloc>
       <yloc>496</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values - Campos para processar</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>ANO_CONCESSAO_BOLSA</name>
+      </field>
+      <field>
+        <name>CODIGO_EMEC_IES_BOLSA</name>
+      </field>
+      <field>
+        <name>NOME_IES_BOLSA</name>
+      </field>
+      <field>
+        <name>TIPO_BOLSA</name>
+      </field>
+      <field>
+        <name>MODALIDADE_ENSINO_BOLSA</name>
+      </field>
+      <field>
+        <name>NOME_CURSO_BOLSA</name>
+      </field>
+      <field>
+        <name>NOME_TURNO_CURSO_BOLSA</name>
+      </field>
+      <field>
+        <name>CPF_BENEFICIARIO_BOLSA</name>
+      </field>
+      <field>
+        <name>SEXO_BENEFICIARIO_BOLSA</name>
+      </field>
+      <field>
+        <name>RACA_BENEFICIARIO_BOLSA</name>
+      </field>
+      <field>
+        <name>DT_NASCIMENTO_BENEFICIARIO</name>
+      </field>
+      <field>
+        <name>BENEFICIARIO_DEFICIENTE_FISICO</name>
+      </field>
+      <field>
+        <name>REGIAO_BENEFICIARIO_BOLSA</name>
+      </field>
+      <field>
+        <name>SIGLA_UF_BENEFICIARIO_BOLSA</name>
+      </field>
+      <field>
+        <name>MUNICIPIO_BENEFICIARIO_BOLSA</name>
+      </field>
+      <field>
+        <name>idade</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
