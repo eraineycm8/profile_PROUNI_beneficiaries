@@ -2,6 +2,10 @@
                                             by: Emanoel Rainey Curvelo Manço
                                                 eraineycm@gmail.com
 
+## LINK PARA A VIEW
+
+https://app.powerbi.com/view?r=eyJrIjoiNzBjMzk0ODctMDMzYS00MzUyLTk1ZDMtM2ZlZmEwYzA5ZmNhIiwidCI6ImE2Zjc0ZWZhLTM2NzQtNDQ5YS1hY2FlLWMwYTIzODYzNzUwNCJ9
+
 ## PROUNI – Contexto geral
 
 O PROUNI é um programa que oferece bolsas de estudo, integrais e parciais, em cursos de
@@ -40,3 +44,5 @@ estratégia Bottom-up, focando na montagem do Data Mart. Essa técnica
 concentra-se na criação de tabelas de dimensões e fatos, alinhada à natureza
 descentralizada de um Data Warehouse, facilitando a análise e a compreensão dos
 dados em um contexto mais segmentado e analítico.
+
+
